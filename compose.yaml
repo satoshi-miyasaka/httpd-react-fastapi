@@ -1,0 +1,67 @@
+services:
+  web:
+    build:
+      args:
+        UID: $UID
+        GID: $GID
+        USERNAME: $USERNAME
+        SERVICE: web
+    container_name: web
+    working_dir: /project/
+    volumes:
+      - type: bind
+        source: ./web/htdocs
+        target: /project/htdocs
+      - type: bind
+        source: ./web/cgi-bin
+        target: /project/cgi-bin
+    ports:
+      - 80:80
+  app:
+    build:
+      args:
+        UID: $UID
+        GID: $GID
+        USERNAME: $USERNAME
+        SERVICE: app
+    container_name: app
+    working_dir: /project/
+    volumes:
+      - type: bind
+        source: ./app/htdocs
+        target: /project/htdocs
+      - type: bind
+        source: ./app/cgi-bin
+        target: /project/cgi-bin
+  api:
+    build:
+      args:
+        UID: $UID
+        GID: $GID
+        USERNAME: $USERNAME
+        SERVICE: api
+    container_name: api
+    working_dir: /project/
+    volumes:
+      - type: bind
+        source: ./api/htdocs
+        target: /project/htdocs
+      - type: bind
+        source: ./api/cgi-bin
+        target: /project/cgi-bin
+  script:
+    build:
+      args:
+        UID: $UID
+        GID: $GID
+        USERNAME: $USERNAME
+        SERVICE: script
+    container_name: script
+    working_dir: /project/
+    volumes:
+      - type: bind
+        source: ./script/htdocs
+        target: /project/htdocs
+      - type: bind
+        source: ./script/cgi-bin
+        target: /project/cgi-bin
