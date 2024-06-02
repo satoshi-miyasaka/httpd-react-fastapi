@@ -1,6 +1,7 @@
 services:
   web:
     build:
+      dockerfile: DockerfileApache2
       args:
         UID: $UID
         GID: $GID
@@ -19,6 +20,7 @@ services:
       - 80:80
   app:
     build:
+      dockerfile: DockerfileApache2
       args:
         UID: $UID
         GID: $GID
@@ -35,6 +37,7 @@ services:
         target: /project/cgi-bin
   api:
     build:
+      dockerfile: DockerfileApache2
       args:
         UID: $UID
         GID: $GID
@@ -51,6 +54,7 @@ services:
         target: /project/cgi-bin
   script:
     build:
+      dockerfile: DockerfileApache2
       args:
         UID: $UID
         GID: $GID
