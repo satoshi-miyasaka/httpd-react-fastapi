@@ -54,18 +54,11 @@ services:
         target: /project/cgi-bin
   script:
     build:
-      dockerfile: DockerfileApache2
-      args:
-        UID: $UID
-        GID: $GID
-        USERNAME: $USERNAME
-        SERVICE: script
+      dockerfile: DockerfileReact
     container_name: script
     working_dir: /project/
     volumes:
       - type: bind
-        source: ./script/htdocs
-        target: /project/htdocs
-      - type: bind
-        source: ./script/cgi-bin
-        target: /project/cgi-bin
+        source: ./script
+        target: /project
+    entrypoint: sh -c "cd /project/front/ && npm start"
