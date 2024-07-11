@@ -61,4 +61,4 @@ services:
       - type: bind
         source: ./script
         target: /project
-    entrypoint: sh -c "cd /project/front/ && npm start"
+    entrypoint: sh -c "cd /project/front/ && npm install && npm start"
